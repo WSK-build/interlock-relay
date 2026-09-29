@@ -22,8 +22,14 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      # The action defaults to `packages: tools platform-tools`, and the standalone
+      # `tools` package no longer exists in the SDK repository, so leaving it at the
+      # default fails this step outright ("Failed to find package 'tools'"). Ask only
+      # for what is still published here; what the build needs is installed next.
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
+        with:
+          packages: 'platform-tools'
 
       # compileSdk 36 is not part of the runner image's default package set, so the
       # platform and its build-tools are installed explicitly rather than assumed.
