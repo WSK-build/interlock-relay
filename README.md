@@ -16,6 +16,9 @@ three built-in execution backends (accessibility, direct platform calls, Shizuku
 artifacts, quotas, and audit trails. Everything user-facing — screens, dialogs, wording, language,
 branding — stays with the host, which injects it through seven small interfaces (the SPI).
 
+## Architecture
+![Interlock Relay architecture](docs/architecture.en.svg)
+
 ## Module layout
 
 ```
