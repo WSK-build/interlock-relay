@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 952" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','Noto Sans SC','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="6.5" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M1,1 L7,4 L1,7" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1000" height="952" fill="#ffffff"/>
+
+  <!-- ===== 标题 ===== -->
+  <text x="40" y="46" font-size="27" font-weight="700" fill="#0f172a">Interlock Relay</text>
+  <text x="40" y="72" font-size="14" fill="#64748b">沙盒化 AI 代理 与 宿主设备能力之间的受控中继 —— 每次跨界都经过可观测、可审计的互锁闸门</text>
+  <rect x="866" y="28" width="94" height="26" rx="13" fill="#f0fdfa" stroke="#5eead4"/>
+  <text x="913" y="45" font-size="12.5" fill="#0d9488" text-anchor="middle" font-family="ui-monospace,monospace">v0.1.0</text>
+
+  <!-- ============================================================
+       L1 沙盒
+  ============================================================ -->
+  <rect x="40" y="92" width="660" height="80" rx="12" fill="#f0fdfa" stroke="#5eead4" stroke-width="1.3"/>
+  <rect x="40" y="92" width="6" height="80" rx="3" fill="#14b8a6"/>
+  <text x="62" y="120" font-size="15.5" font-weight="700" fill="#0f766e">沙盒中的 AI Agent</text>
+  <text x="62" y="143" font-size="12" fill="#64748b">仅运行 relay-client.cjs，</text>
+  <text x="62" y="161" font-size="12" fill="#64748b">无任何设备权限</text>
+  <!-- CLI tags -->
+  <g font-size="10.5" font-family="ui-monospace,monospace" fill="#0d9488">
+    <rect x="296" y="104" width="46" height="20" rx="5" fill="#ffffff" stroke="#99f6e4"/><text x="319" y="118" text-anchor="middle">call</text>
+    <rect x="348" y="104" width="58" height="20" rx="5" fill="#ffffff" stroke="#99f6e4"/><text x="377" y="118" text-anchor="middle">status</text>
+    <rect x="412" y="104" width="58" height="20" rx="5" fill="#ffffff" stroke="#99f6e4"/><text x="441" y="118" text-anchor="middle">cancel</text>
+    <rect x="476" y="104" width="58" height="20" rx="5" fill="#ffffff" stroke="#99f6e4"/><text x="505" y="118" text-anchor="middle">doctor</text>
+    <rect x="296" y="132" width="98" height="20" rx="5" fill="#ffffff" stroke="#99f6e4"/><text x="345" y="146" text-anchor="middle">capabilities</text>
+    <rect x="400" y="132" width="50" height="20" rx="5" fill="#ffffff" stroke="#99f6e4"/><text x="425" y="146" text-anchor="middle">home</text>
+    <rect x="456" y="132" width="42" height="20" rx="5" fill="#ffffff" stroke="#99f6e4"/><text x="477" y="146" text-anchor="middle">ask</text>
+  </g>
+
+  <line x1="370" y1="178" x2="370" y2="196" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- ============================================================
+       L2 传输
+  ============================================================ -->
+  <rect x="40" y="204" width="660" height="118" rx="12" fill="#f0f9ff" stroke="#7dd3fc" stroke-width="1.3"/>
+  <rect x="40" y="204" width="6" height="118" rx="3" fill="#0ea5e9"/>
+  <text x="62" y="230" font-size="15.5" font-weight="700" fill="#0369a1">文件邮箱 / 控制通道</text>
+  <text x="652" y="230" font-size="11" fill="#64748b" text-anchor="end" font-family="ui-monospace,monospace">atomic: .part → rename</text>
+
+  <!-- v1 -->
+  <rect x="56" y="242" width="306" height="58" rx="9" fill="#ffffff" stroke="#bae6fd"/>
+  <text x="70" y="264" font-size="13" font-weight="700" fill="#0284c7">v1 mailbox</text>
+  <text x="70" y="284" font-size="10.5" fill="#64748b" font-family="ui-monospace,monospace">run/inbox/ · run/outbox/</text>
+  <!-- v2 -->
+  <rect x="378" y="242" width="306" height="58" rx="9" fill="#ffffff" stroke="#bae6fd"/>
+  <text x="392" y="264" font-size="13" font-weight="700" fill="#0284c7">v2 control channel</text>
+  <text x="392" y="284" font-size="10.5" fill="#64748b" font-family="ui-monospace,monospace">run/control-inbox/ · control-outbox/</text>
+  <text x="62" y="313" font-size="11" fill="#64748b">op：submit / status / cancel / health / ask　·　仅消费 rename 完成的文件</text>
+
+  <line x1="370" y1="328" x2="370" y2="346" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- ============================================================
+       L3 互锁
+  ============================================================ -->
+  <rect x="40" y="354" width="660" height="150" rx="12" fill="#fffbeb" stroke="#fcd34d" stroke-width="1.3"/>
+  <rect x="40" y="354" width="6" height="150" rx="3" fill="#f59e0b"/>
+  <text x="62" y="380" font-size="15.5" font-weight="700" fill="#b45309">InterlockGate 互锁闸门</text>
+  <text x="652" y="380" font-size="11" fill="#64748b" text-anchor="end">放行 = 系统权限可达 且 档位允许</text>
+
+  <!-- 三个组件 -->
+  <g>
+    <rect x="56" y="390" width="202" height="44" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="70" y="410" font-size="12.5" font-weight="700" fill="#b45309">InterlockGate</text>
+    <text x="70" y="427" font-size="10.5" fill="#94a3b8">双重校验 · 判据署名</text>
+
+    <rect x="269" y="390" width="202" height="44" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="283" y="410" font-size="12.5" font-weight="700" fill="#b45309">InterlockBroker</text>
+    <text x="283" y="427" font-size="10.5" fill="#94a3b8">审批队列 · 三面投递</text>
+
+    <rect x="482" y="390" width="202" height="44" rx="8" fill="#ffffff" stroke="#fde68a"/>
+    <text x="496" y="410" font-size="12.5" font-weight="700" fill="#b45309">RateLimiter</text>
+    <text x="496" y="427" font-size="10.5" fill="#94a3b8">滑动窗口 · 防失控重发</text>
+  </g>
+
+  <!-- 三档 ceiling -->
+  <g font-size="10.5">
+    <rect x="56" y="444" width="202" height="46" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="70" y="463" font-size="11.5" font-weight="700" fill="#dc2626" font-family="ui-monospace,monospace">ASK_ONLY</text>
+    <text x="70" y="480" fill="#b91c1c">永不免确认 · shell/装包/剪贴板</text>
+
+    <rect x="269" y="444" width="202" height="46" rx="8" fill="#fffbeb" stroke="#fde68a"/>
+    <text x="283" y="463" font-size="11.5" font-weight="700" fill="#d97706" font-family="ui-monospace,monospace">SESSION_ONLY</text>
+    <text x="283" y="480" fill="#b45309">仅本会话 · 截屏/录屏/通知</text>
+
+    <rect x="482" y="444" width="202" height="46" rx="8" fill="#ecfdf5" stroke="#a7f3d0"/>
+    <text x="496" y="463" font-size="11.5" font-weight="700" fill="#059669" font-family="ui-monospace,monospace">ANY</text>
+    <text x="496" y="480" fill="#047857">可长期放行 · UI 点击/输入</text>
+  </g>
+
+  <line x1="370" y1="510" x2="370" y2="528" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- ============================================================
+       L4 分发
+  ============================================================ -->
+  <rect x="40" y="536" width="660" height="80" rx="12" fill="#f5f3ff" stroke="#ddd6fe" stroke-width="1.3"/>
+  <rect x="40" y="536" width="6" height="80" rx="3" fill="#8b5cf6"/>
+  <text x="62" y="562" font-size="15.5" font-weight="700" fill="#6d28d9">Surface 分发器 · 执行模式策略</text>
+  <g font-size="11">
+    <rect x="56" y="572" width="202" height="34" rx="8" fill="#ffffff" stroke="#ddd6fe"/>
+    <text x="157" y="593" text-anchor="middle" fill="#6d28d9" font-weight="600">foreground</text>
+    <rect x="269" y="572" width="202" height="34" rx="8" fill="#ffffff" stroke="#ddd6fe"/>
+    <text x="370" y="593" text-anchor="middle" fill="#6d28d9" font-weight="600">trusted-display</text>
+    <rect x="482" y="572" width="202" height="34" rx="8" fill="#ffffff" stroke="#ddd6fe"/>
+    <text x="583" y="593" text-anchor="middle" fill="#6d28d9" font-weight="600">observe-only</text>
+  </g>
+
+  <line x1="370" y1="622" x2="370" y2="640" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#ar)"/>
+
+  <!-- ============================================================
+       L5 执行后端
+  ============================================================ -->
+  <rect x="40" y="648" width="660" height="150" rx="12" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.3"/>
+  <text x="62" y="674" font-size="15.5" font-weight="700" fill="#334155">三个内建执行后端</text>
+  <text x="652" y="674" font-size="11" fill="#64748b" text-anchor="end">39 capabilities</text>
+
+  <!-- A11y -->
+  <rect x="56" y="684" width="202" height="102" rx="9" fill="#ffffff" stroke="#a7f3d0" stroke-width="1.2"/>
+  <rect x="56" y="684" width="202" height="4" rx="2" fill="#10b981"/>
+  <text x="70" y="710" font-size="13" font-weight="700" fill="#047857">无障碍 A11y</text>
+  <text x="70" y="728" font-size="9.5" fill="#94a3b8" font-family="ui-monospace,monospace">AccessibilityService</text>
+  <g font-size="10.5" fill="#64748b">
+    <text x="70" y="747">· UI 树快照 / 节点定位</text>
+    <text x="70" y="764">· 节点点击 / 滑动 / 输入</text>
+    <text x="70" y="781">· 无触摸事件，双屏服务</text>
+  </g>
+
+  <!-- Direct -->
+  <rect x="269" y="684" width="202" height="102" rx="9" fill="#ffffff" stroke="#bfdbfe" stroke-width="1.2"/>
+  <rect x="269" y="684" width="202" height="4" rx="2" fill="#3b82f6"/>
+  <text x="283" y="710" font-size="13" font-weight="700" fill="#1d4ed8">平台直连 Direct</text>
+  <text x="283" y="728" font-size="9.5" fill="#94a3b8" font-family="ui-monospace,monospace">MediaProjection · Intent</text>
+  <g font-size="10.5" fill="#64748b">
+    <text x="283" y="747">· 截屏录屏 / 通知监听</text>
+    <text x="283" y="764">· 通讯录 / 日历 / 定位</text>
+    <text x="283" y="781">· 媒体 / 音频采集</text>
+  </g>
+
+  <!-- Shizuku -->
+  <rect x="482" y="684" width="202" height="102" rx="9" fill="#ffffff" stroke="#fbcfe8" stroke-width="1.2"/>
+  <rect x="482" y="684" width="202" height="4" rx="2" fill="#ec4899"/>
+  <text x="496" y="710" font-size="13" font-weight="700" fill="#be185d">Shizuku</text>
+  <text x="496" y="728" font-size="9.5" fill="#94a3b8" font-family="ui-monospace,monospace">shell identity</text>
+  <g font-size="10.5" fill="#64748b">
+    <text x="496" y="747">· shell 动词 / 坐标操作</text>
+    <text x="496" y="764">· 可信虚拟屏</text>
+    <text x="496" y="781">· 装包 / AppOps / 设置</text>
+  </g>
+
+  <!-- ===== 底部支撑 Storage / Log ===== -->
+  <rect x="56" y="812" width="306" height="62" rx="9" fill="#f0f9ff" stroke="#bae6fd"/>
+  <text x="72" y="837" font-size="12.5" font-weight="700" fill="#0369a1">Storage</text>
+  <text x="72" y="857" font-size="10.5" fill="#64748b">产物布局 · 配额账本 · 回收器</text>
+
+  <rect x="378" y="812" width="306" height="62" rx="9" fill="#fffbeb" stroke="#fde68a"/>
+  <text x="394" y="837" font-size="12.5" font-weight="700" fill="#b45309">Log / Audit</text>
+  <text x="394" y="857" font-size="10.5" fill="#64748b">运行日志 · 审计日志 · Redactor 脱敏</text>
+
+  <!-- ============================================================
+       右侧 SPI 栏
+  ============================================================ -->
+  <rect x="724" y="92" width="236" height="782" rx="12" fill="#fffdf5" stroke="#f59e0b" stroke-width="1.3" stroke-dasharray="6 5"/>
+  <text x="742" y="120" font-size="14.5" font-weight="700" fill="#b45309">SPI 宿主注入</text>
+  <text x="742" y="140" font-size="10.5" fill="#a8a29e">七个扩展点，均可整体替换</text>
+
+  <g font-size="10.5">
+    <line x1="742" y1="152" x2="942" y2="152" stroke="#fde68a"/>
+    <text x="742" y="172" font-family="ui-monospace,monospace" fill="#d97706" font-weight="700">RelayText</text>
+    <text x="742" y="189" fill="#334155" font-weight="600">本地化文案</text>
+    <text x="742" y="205" fill="#a8a29e">默认系统语言</text>
+
+    <line x1="742" y1="218" x2="942" y2="218" stroke="#fde68a"/>
+    <text x="742" y="238" font-family="ui-monospace,monospace" fill="#d97706" font-weight="700">RelaySurfaces</text>
+    <text x="742" y="255" fill="#334155" font-weight="600">审批浮层 / 通知面</text>
+    <text x="742" y="271" fill="#a8a29e">默认 NoSurfaces</text>
+
+    <line x1="742" y1="284" x2="942" y2="284" stroke="#fde68a"/>
+    <text x="742" y="304" font-family="ui-monospace,monospace" fill="#d97706" font-weight="700">RelayCapabilities</text>
+    <text x="742" y="321" fill="#334155" font-weight="600">能力表 / 可用性闸门</text>
+    <text x="742" y="337" fill="#a8a29e">内建 39 项</text>
+
+    <line x1="742" y1="350" x2="942" y2="350" stroke="#fde68a"/>
+    <text x="742" y="370" font-family="ui-monospace,monospace" fill="#d97706" font-weight="700">RelayPathPolicy</text>
+    <text x="742" y="387" fill="#334155" font-weight="600">挂载点 / 目录 / CLI 名</text>
+    <text x="742" y="403" fill="#a8a29e">默认 /opt/interlock-relay</text>
+
+    <line x1="742" y1="416" x2="942" y2="416" stroke="#fde68a"/>
+    <text x="742" y="436" font-family="ui-monospace,monospace" fill="#d97706" font-weight="700">RelayExecutor</text>
+    <text x="742" y="453" fill="#334155" font-weight="600">增删替换执行后端</text>
+    <text x="742" y="469" fill="#a8a29e">内建 A11y/Direct/Shizuku</text>
+
+    <line x1="742" y1="482" x2="942" y2="482" stroke="#fde68a"/>
+    <text x="742" y="502" font-family="ui-monospace,monospace" fill="#d97706" font-weight="700">RelayPrefs</text>
+    <text x="742" y="519" fill="#334155" font-weight="600">键值偏好存储</text>
+    <text x="742" y="535" fill="#a8a29e">默认 SharedPreferences</text>
+
+    <line x1="742" y1="548" x2="942" y2="548" stroke="#fde68a"/>
+    <text x="742" y="568" font-family="ui-monospace,monospace" fill="#d97706" font-weight="700">RelayRedactor</text>
+    <text x="742" y="585" fill="#334155" font-weight="600">日志字段脱敏</text>
+    <text x="742" y="601" fill="#a8a29e">默认恒等</text>
+  </g>
+
+  <rect x="742" y="818" width="200" height="42" rx="8" fill="#fef3c7" stroke="#fcd34d"/>
+  <text x="756" y="837" font-size="10.5" fill="#92400e">UI / 对话框 / 文案 / 品牌</text>
+  <text x="756" y="853" font-size="10.5" fill="#92400e">均由宿主掌控，core 不绑定</text>
+</svg>
